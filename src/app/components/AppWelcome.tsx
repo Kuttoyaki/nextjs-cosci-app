@@ -1,15 +1,22 @@
-export default function AppWelcome() {
+"use client"
+
+type AppWelcomeProps = {
+    headTitle: string;
+    isShow: boolean;
+}
+
+export default function AppWelcome({headTitle, isShow}: AppWelcomeProps) {
     const title = "Welcome to my Page";
     const year = <p>2025</p>;
-    const isShow = true;
     const handleClick = () => {
-        alert("Hello TypeScript");
+        alert("DONKI DONKI");
     }
 
     return (
         <>
+            <h1>{headTitle}</h1>
             <p>{title.toUpperCase()}</p>
-            <button className="bg-yellow-100 p-3 m-3 text-orange-400 rounded-lg" onClick={handleClick}>Click here!</button>  
+            <button className="bg-yellow-100 p-3 m-3 text-orange-400 rounded-lg" onClick={handleClick}>Click here!</button>
             {year}     
             { 
                 isShow && <p>Date: 27/05/2025</p>
