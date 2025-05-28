@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Image from "next/image";
 
 type Features01PageProps = {
   courses: any[]
@@ -27,7 +28,7 @@ const Features05Page = ({courses}: Features01PageProps) => {
                 </p>
               </CardHeader>
               <CardContent className="mt-auto px-0 pb-0">
-                <div className="bg-muted h-40 ml-6 rounded-tl-xl" />
+                <Image src={course.picture} alt={course.detail} width={500} height={300} className="w-full h-auto object-cover" />
               </CardContent>
             </Card>
           ))}
