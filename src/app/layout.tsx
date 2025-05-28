@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Orbitron } from "next/font/google";
 import "./globals.css";
+//import AppNavbar from "./components/AppNavbar";
+import Navbar01Page from "@/components/navbar-01/navbar-01";
 
 const front = Orbitron({
   subsets: ["latin"],
@@ -22,6 +24,8 @@ export default function RootLayout({
       <body
         className= {`${front.className}`}
       >
+        <Navbar01Page />
+
         {children}
       </body>
     </html>
