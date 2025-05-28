@@ -1,13 +1,15 @@
-import Contact01Page from "@/components/contact-01/contact-01";
+import Features05Page from "@/components/features-05/features-05";
 
 export default async function About(){
-    const data = await fetch("https://api.codingthailand.com/api/version", {next: {revalidate: 3600}} );
-    const apiInfo = await data.json();
+    const data = await fetch("https://api.codingthailand.com/api/course", {cache: "no-store"} );
+    const courses = await data.json();
+    
     return (
         <>
             {
-                apiInfo && <Contact01Page version={apiInfo.data.version} />
+                courses && <Features05Page courses={courses.data} />
             }
         </>
     );
 }
+
