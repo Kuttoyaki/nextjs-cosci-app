@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: "Lastest product 2025",
 };
 
-export default function RootLayout({
+export default function LoginLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
