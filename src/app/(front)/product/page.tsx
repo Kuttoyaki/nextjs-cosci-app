@@ -10,10 +10,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import db from "@/db";
+import { product } from "@/db/schema";
+import { desc } from "drizzle-orm";
 import { ChevronRight } from "lucide-react";
 
-const product = async () => {
-  const products = await db.query.product.findMany();
+const Product = async () => {
+  const products = await db.query.product.findMany({
+      orderBy: desc(product.id),
+      limit: 10,
+    });
   return (
     <div className="max-w-screen-xl mx-auto py-16 px-6 xl:px-0">
 
@@ -33,31 +38,30 @@ const product = async () => {
       </div>
 
       <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-          <Card key={i} className="shadow-none overflow-hidden rounded-md">
+        {products.map((i) => (
+          <Card key={i.id} className="shadow-none overflow-hidden rounded-md">
             <CardHeader className="p-0">
               <div className="aspect-video bg-muted w-full border-b" />
             </CardHeader>
             <CardContent className="py-6">
               <div className="flex items-center gap-3">
                 <Badge className="bg-primary/5 text-primary hover:bg-primary/5 shadow-none">
-                  Technology
+                  {i.price}
                 </Badge>
-                <span className="font-medium text-xs text-muted-foreground">
-                  5 min read
-                </span>
-              </div>
+                </div>
+                <h2 className="font-medium text-xs text-muted-foreground">
+                  {i.title}
+                </h2>
 
               <h3 className="mt-4 text-[1.35rem] font-semibold tracking-tight">
-                A beginner&apos;s guide to blackchain for engineers
+                {i.title}
               </h3>
               <p className="mt-2 text-muted-foreground">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in eros.
+              Cost {i.price} Baht
               </p>
 
               <Button className="mt-6 shadow-none">
-                Read more <ChevronRight />
+                Buy It <ChevronRight />
               </Button>
             </CardContent>
           </Card>
@@ -67,4 +71,4 @@ const product = async () => {
   );
 };
 
-export default product;
+export default Product;
