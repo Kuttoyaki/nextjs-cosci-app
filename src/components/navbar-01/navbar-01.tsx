@@ -5,6 +5,7 @@ import { NavigationSheet } from "./navigation-sheet";
 import Link from "next/link";
 import { ShoppingBasketIcon } from "lucide-react";
 import { Badge } from "../ui/badge";
+import CountCartItem from "@/app/(front)/components/CountCartItem";
 
 const Navbar01Page = () => {
   return (
@@ -18,9 +19,9 @@ const Navbar01Page = () => {
 
           <div className="flex items-center gap-3">
 
-          
-            <Badge className="p-3 text-sm"><ShoppingBasketIcon/> 0 item (s)</Badge>
-          
+          <Link href="/cart">
+            <Badge className="p-3 text-sm"><ShoppingBasketIcon/> <CountCartItem/> item (s)</Badge>
+          </Link>
 
             {/* Desktop Buttons */}
 

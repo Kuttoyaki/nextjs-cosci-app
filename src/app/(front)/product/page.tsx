@@ -13,6 +13,7 @@ import db from "@/db";
 import { product } from "@/db/schema";
 import { desc } from "drizzle-orm";
 import { ChevronRight } from "lucide-react";
+import CartButton from "../components/CartButton";
 
 const Product = async () => {
   const products = await db.query.product.findMany({
@@ -60,9 +61,8 @@ const Product = async () => {
               Cost {i.price} Baht
               </p>
 
-              <Button className="mt-6 shadow-none">
-                Buy It <ChevronRight />
-              </Button>
+              <CartButton product={i} />
+              
             </CardContent>
           </Card>
         ))}

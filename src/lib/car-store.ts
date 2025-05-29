@@ -9,44 +9,44 @@ type CartItem = {
 }
 
 type CartStore = {
-    items: CartItem[]
-    addItem: (item: CartItem) => void
-    removeItem: (productId: string) => void
-    clearCart: () => void
-    totalItems: () => number
-    totalPrice: () => number
+  items: CartItem[]
+  addItem: (item: CartItem) => void
+  removeItem: (productId: string) => void
+  clearCart: () => void
+  totalItems: () => number
+  totalPrice: () => number
 }
 
 export const useCartStore = create<CartStore>()(
-    persist(
+  persist(
     (set, get) => ({
-        items: [],
-        addItem: (item) => {
+      items: [],
+      addItem: (item) => {
         const existing = get().items.find((i) => i.productId === item.productId)
         if (existing) {
-            set({
+          set({
             items: get().items.map((i) =>
-                i.productId === item.productId
+              i.productId === item.productId
                 ? { ...i, qty: i.qty + item.qty }
                 : i
             ),
-            })
+          })
         } else {
-            set({ items: [...get().items, item] })
+          set({ items: [...get().items, item] })
         }
-        },
-        removeItem: (productId) =>
+      },
+      removeItem: (productId) =>
         set({
-            items: get().items.filter((i) => i.productId !== productId),
+          items: get().items.filter((i) => i.productId !== productId),
         }),
-        clearCart: () => set({ items: [] }),
-        totalItems: () =>
+      clearCart: () => set({ items: [] }),
+      totalItems: () =>
         get().items.reduce((total, item) => total + item.qty, 0),
-        totalPrice: () =>
+      totalPrice: () =>
         get().items.reduce((total, item) => total + item.qty * item.price, 0),
     }),
     {
-      name: 'cosci-cart', // key ที่ใช้ใน localStorage
+      name: 'codingthailand-cart', // key ที่ใช้ใน localStorage
     }
-    )
+  )
 )
