@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  email: z.string().email(),
+  email: z.string().email("Your email is invalid").min(1, "Email is required"),
   password: z.string().min(8, "Password must be at least 8 characters long"),
 });
 
@@ -38,7 +38,7 @@ const Login01Page = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-xs w-full flex flex-col items-center">
         <p className="mt-4 text-xl font-bold tracking-tight">
-          Log in to Shadcn UI Blocks
+          Login to your account
         </p>
 
         <Button className="mt-8 w-full gap-3">
@@ -94,7 +94,7 @@ const Login01Page = () => {
               )}
             />
             <Button type="submit" className="mt-4 w-full">
-              Continue with Email
+              Login
             </Button>
           </form>
         </Form>
@@ -104,12 +104,12 @@ const Login01Page = () => {
             href="#"
             className="text-sm block underline text-muted-foreground text-center"
           >
-            Forgot your password?
+            Forgot password?
           </Link>
           <p className="text-sm text-center">
-            Don&apos;t have an account?
-            <Link href="#" className="ml-1 underline text-muted-foreground">
-              Create account
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="ml-1 underline text-muted-foreground">
+              Create an account
             </Link>
           </p>
         </div>

@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 export default function CartList() {
     const router = useRouter();
 
-export default function CartList() {
     const items = useCartStore((state) => state.items);
     const removeItem = useCartStore((state) => state.removeItem);
     const clearCart = useCartStore((state) => state.clearCart);
@@ -73,5 +72,4 @@ export default function CartList() {
 
                 </div>
     );
-}
 }
