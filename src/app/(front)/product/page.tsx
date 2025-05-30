@@ -1,6 +1,6 @@
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import {  } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Select,
@@ -12,7 +12,7 @@ import {
 import db from "@/db";
 import { product } from "@/db/schema";
 import { desc } from "drizzle-orm";
-import { ChevronRight } from "lucide-react";
+import { } from "lucide-react";
 import CartButton from "../components/CartButton";
 
 const Product = async () => {
